@@ -1,66 +1,221 @@
+/* Reset e Estilos Globais */
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #f0f0f1; /* Cinza claro de fundo do WordPress */
+    color: #1d2327; /* Cinza escuro para texto */
 }
 
+/* Cabeçalho */
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1rem;
+    background-color: #1d2327; /* Barra superior escura do WordPress */
+    color: #fff;
+    padding: 1.5rem 2rem;
     text-align: center;
+    border-bottom: 4px solid #0073aa; /* Detalhe em azul */
 }
 
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* Conteúdo Principal */
 main {
+    max-width: 960px;
+    margin: 2rem auto;
     padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
 
+/* Tabela */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1rem;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
 }
 
 th, td {
-    padding: 0.75rem;
+    padding: 1rem;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-th {
-    background-color: #f2f2f2;
+/* Cabeçalho da Tabela */
+thead th {
+    background-color: #1d2327; /* Fundo escuro para o cabeçalho */
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #1d2327;
+}
+
+/* Corpo da Tabela */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Linhas alternadas */
+}
+
+tbody tr:hover {
+    background-color: #f0f0f1; /* Efeito hover */
 }
 
 td[contenteditable="true"] {
-    background-color: #fffbe6;
-    cursor: pointer;
+    background-color: #fff;
+    cursor: text;
+    transition: background-color 0.3s ease;
 }
 
+td[contenteditable="true"]:focus {
+    background-color: #fffbe6; /* Destaque ao editar */
+    outline: 1px solid #0073aa;
+}
+
+/* Rodapé da Tabela */
 tfoot td {
     font-weight: bold;
-    background-color: #f9f9f9;
+    font-size: 1.2rem;
+    background-color: #f0f0f1;
+    border-top: 2px solid #ddd;
+}
+
+#total {
+    color: #0073aa; /* Cor de destaque para o total */
+}
+
+/* Botões */
+.botoes-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
 button {
-    padding: 0.5rem 1rem;
-    background-color: #4CAF50;
+    display: block;
+    width: 100%;
+    padding: 1rem;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
-    background-color: #45a049;
+#calcular {
+    background-color: #0073aa; /* Azul padrão do WordPress */
 }
 
+#calcular:hover {
+    background-color: #005a87; /* Azul mais escuro no hover */
+}
+
+#limpar {
+    background-color: #646970; /* Cinza secundário */
+}
+
+#limpar:hover {
+    background-color: #4e5358; /* Cinza mais escuro no hover */
+}
+
+/* Rodapé da Página */
 footer {
     text-align: center;
-    padding: 1rem;
-    background-color: #f2f2f2; /* Opcional: cor de fundo para destacar o rodapé */
+    padding: 2rem 1rem;
+    color: #555d66;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    main {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    th, td {
+        padding: 0.75rem;
+    }
+
+    tfoot td {
+        font-size: 1.1rem;
+    }
+
+    button {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .botoes-container {
+        grid-template-columns: 1fr; /* Botões em coluna única */
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    /* Transforma a tabela para um layout de blocos em telas pequenas */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border: 1px solid #ccc;
+        margin-bottom: 0.5rem;
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    /* Adiciona os rótulos das colunas antes dos dados */
+    td:nth-of-type(1):before { content: "Categoria"; }
+    td:nth-of-type(2):before { content: "Valor (R$)"; }
+
+    tfoot td {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    tfoot td:nth-of-type(1) {
+        font-size: 1.2rem;
+    }
 }
